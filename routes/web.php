@@ -30,7 +30,7 @@ Route::get('/all_times', function () {
 
 
 Route::resource('tours', TourController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'edit', 'update'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
