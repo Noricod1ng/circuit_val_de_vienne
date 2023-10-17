@@ -54,7 +54,19 @@
                                         {{ __('Edit') }}
 
                                     </x-dropdown-link>
+                                    <form method="POST" action="{{ route('tours.destroy', $tour) }}">
 
+                                        @csrf
+
+                                        @method('delete')
+
+                                        <x-dropdown-link :href="route('tours.destroy', $tour)" onclick="event.preventDefault(); this.closest('form').submit();">
+
+                                            {{ __('Delete') }}
+
+                                        </x-dropdown-link>
+
+                                    </form>
                                 </x-slot>
 
                             </x-dropdown>
