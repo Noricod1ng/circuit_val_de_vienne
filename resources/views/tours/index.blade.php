@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
 
-        <form method="POST" action="{{ route('tours.store') }}">
+        <form method="POST" action="{{ route('tours.index') }}">
             @csrf
 
             <!-- Date -->
@@ -39,5 +39,5 @@
         </form>
     </div>
 
-
 </x-app-layout>
+
