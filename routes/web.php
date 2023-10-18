@@ -25,7 +25,8 @@ Route::get('/accueil', function () {
 })->middleware(['auth', 'verified'])->name('accueil');
 
 Route::get('/all_times', function () {
-    return view('tours.list', ['tours' => Tour::with('user')->latest()->cursorPaginate(2)] );
+    $tours = Tour::with('user')->orderBy('time')->cursorPaginate(30);
+    return view('tours.list', ['tours' => $tours]);
 })->name('tours.list');
 
 Route::resource('tours', TourController::class)

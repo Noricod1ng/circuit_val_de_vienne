@@ -16,12 +16,13 @@
                     <x-nav-link :href="route('accueil')" :active="request()->routeIs('accueil')">
                         {{ __('Accueil') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
-                        {{ __('Tours') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
-                        {{ __('Tours Liste') }}
+                        {{ __('Tous les temps') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+                        {{ __('Ajouter un tour') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -85,11 +86,17 @@
             <x-responsive-nav-link :href="route('accueil')" :active="request()->routeIs('accueil')">
                 {{ __('Accueil') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+            <x-responsive-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
 
-                {{ __('Tours') }}
+                {{ __('Tous les temps') }}
 
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+
+                {{ __('Ajouter un tour') }}
+
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -53,7 +53,7 @@
                 <div class="mt-4 row">
                     <!-- Carte 1 -->
                     <div class="col-md-4">
-                        <a href="#" class="hover:no-underline" target="_blank">
+                        <a href="https://les-2-arbres.e-catalogues.info/" class="hover:no-underline" target="_blank">
                             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                 <img src="{{asset('storage/historic_tour.png')}}" alt="Actualité 1">
                                 <div class="p-4">
