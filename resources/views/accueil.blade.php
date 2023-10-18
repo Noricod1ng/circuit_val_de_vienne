@@ -37,51 +37,65 @@
             </div>
 
             <!-- Premier paragraphe "Bienvenue" -->
-            <div class="mt-4">
-                <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Bienvenue</h2>
-                <p class="mt-2 text-gray-900 dark:text-gray-100">
-                    Votre texte de bienvenue ici.
+            <div class="mt-6 text-center">
+                <h1 class="font-semibold text-3xl text-gray-800 dark:text-gray-200" style="font-size: 2.25rem;">Bienvenue</h1>
+                <p class="mt-6 text-gray-900 dark:text-gray-100">
+                    Les Deux Arbres exploitent désormais le Circuit du Val de Vienne. En 18 mois après des travaux considérables, la piste du Vigeant est entrée dans une nouvelle ère.
+                    Les stands, le paddock, les salles de réception, la restauration, la salle de presse, la salle de conférence, le podium, le contrôle vidéo sécurité, la sonorisation, les liaisons internet, ont été refondées et reconstruites pour offrir une nouvelle dimension aux utilisateurs et spectateurs.
                 </p>
             </div>
 
+
+
             <!-- Deuxième paragraphe "Actualités" -->
-            <div class="mt-8">
-                <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Actualités</h2>
-                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="mt-6 text-center">
+                <h1 class="font-semibold text-3xl text-gray-800 dark:text-gray-200" style="font-size: 2.25rem;">Actualités</h1>
+                <div class="mt-4 row">
                     <!-- Carte 1 -->
-                    <a href="#" class="hover:no-underline">
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                            <img src="actualite1.jpg" alt="Actualité 1">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Titre Actualité 1</h3>
-                                <p class="mt-2 text-gray-900 dark:text-gray-100">Description de l'actualité 1.</p>
+                    <div class="col-md-4">
+                        <a href="#" class="hover:no-underline" target="_blank">
+                            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                                <img src="{{asset('storage/historic_tour.png')}}" alt="Actualité 1">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Historic Tour</h3>
+                                    <p class="mt-2 text-gray-900 dark:text-gray-100">21 - 22 Octobre 2023</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
 
                     <!-- Carte 2 -->
-                    <a href="#" class="hover:no-underline">
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                            <img src="actualite2.jpg" alt="Actualité 2">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Titre Actualité 2</h3>
-                                <p class="mt-2 text-gray-900 dark:text-gray-100">Description de l'actualité 2.</p>
+                    <div class="col-md-4">
+                        <a href="https://les-2-arbres.e-catalogues.info/" class="hover:no-underline" target="_blank">
+                            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                                <img src="{{asset('storage/drift.png')}}" alt="Actualité 2">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Championnat de France de Drift</h3>
+                                    <p class="mt-2 text-gray-900 dark:text-gray-100">28 - 29 Octobre 2023</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
 
                     <!-- Carte 3 -->
-                    <a href="#" class="hover:no-underline">
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                            <img src="actualite3.jpg" alt="Actualité 3">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Titre Actualité 3</h3>
-                                <p class="mt-2 text-gray-900 dark:text-gray-100">Description de l'actualité 3.</p>
+                    <div class="col-md-4">
+                        <a href="https://www.circuitvaldevienne.com/images/pdf/journee-touristique-1-novembre-2023.pdf" class="hover:no-underline" target="_blank">
+                            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                                <img src="{{asset('storage/journee_touristique.png')}}" alt="Actualité 3">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Journée Touristique</h3>
+                                    <p class="mt-2 text-gray-900 dark:text-gray-100">1er Novembre 2023</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
+
+
+            <a class="mt-6 mx-auto" href="https://www.youtube.com/watch?v=DSd51Pm5fMs" style="display: block; width: 940px; height: 150px;" target="_blank">
+                <img src="{{asset('storage/bandeau_video_residence.png')}}" alt="Bandeau vidéo Résidence">
+            </a>
         </div>
     </div>
 </x-app-layout>
