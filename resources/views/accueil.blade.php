@@ -1,30 +1,36 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Accueil') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             <!-- Bootstrap Carousel -->
-            <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('storage/image1.png')}}" alt="Image 1">
+                        <img class="d-block w-100" src="{{asset('storage/circuit_aerien.png')}}" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('storage/image2.png')}}" alt="Image 2">
+                        <img class="d-block w-100" src="{{asset('storage/motos.png')}}" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="image3.jpg" alt="Image 3">
+                        <img class="d-block w-100" src="{{asset('storage/voitures.png')}}" alt="Third slide">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>

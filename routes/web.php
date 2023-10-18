@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/accueil', function () {
+    return view('accueil');
+})->middleware(['auth', 'verified'])->name('accueil');
 
 Route::get('/all_times', function () {
     return view('tours.list', ['tours' => Tour::with('user')->latest()->cursorPaginate(2)] );
