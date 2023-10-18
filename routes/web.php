@@ -25,9 +25,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/all_times', function () {
-    return view('tours.list', ['tours' => Tour::with('user')->latest()->get()]);
+    return view('tours.list', ['tours' => Tour::with('user')->latest()->cursorPaginate(2)] );
 })->name('tours.list');
-
 
 Route::resource('tours', TourController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])

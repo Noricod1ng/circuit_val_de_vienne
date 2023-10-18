@@ -85,5 +85,7 @@
 
         @endforeach
 
+        {{ $tours->links() }}
+
     </div>
 </x-app-layout>
