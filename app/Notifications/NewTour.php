@@ -39,10 +39,11 @@ class NewTour extends Notification
         return (new MailMessage)
             ->subject("Nouveau Tour de {$this->tour->user->name}")
             ->greeting("Nouveau Tour de {$this->tour->user->name}")
-            ->line(Str::limit($this->tour->time, 50))
-            ->line(Str::limit($this->tour->car, 50))
+            ->line("{$this->tour->user->name} a enregistré un tour de " . Str::limit($this->tour->time, 50) . " !")
+            ->line("Voiture enregistrée : " .Str::limit($this->tour->car, 50))
             ->action('Voir le tour', url('/all_times'))
-            ->line('Thank you for using our application!');
+            ->line('Merci d\'utiliser notre application');
+
     }
 
     /**
