@@ -6,8 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('accueil') }}">
-{{--                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>--}}
-                        <img src="{{asset('storage/image3.png')}}" width="100" height="auto" >
+                        {{--                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"/>--}}
+                        <img src="{{asset('storage/image3.png')}}" width="100" height="auto">
                     </a>
                 </div>
 
@@ -19,16 +19,17 @@
                     <x-nav-link :href="route('presentation')" :active="request()->routeIs('presentation')">
                         {{ __('Présentation') }}
                     </x-nav-link>
-
                     <x-nav-link :href="url('https://les-2-arbres.e-catalogues.info/')" target="_blank">
                         {{ __('Calendrier') }}
                     </x-nav-link>
                     <x-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
                         {{ __('Tous les temps') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
-                        {{ __('Ajouter un tour') }}
-                    </x-nav-link>
+                    @auth
+                        <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+                            {{ __('Ajouter un tour') }}
+                        </x-nav-link>
+                    @endauth
 
                 </div>
             </div>
@@ -37,19 +38,31 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                        @auth
+                            <button
+                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div>{{ Auth::user()->name }}</div>
 
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                     viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                          clip-rule="evenodd"/>
-                                </svg>
-                            </div>
-                        </button>
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        @else
+                            <a href="{{ route('login') }}"
+                               class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                                in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}"
+                                   class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                            @endif
+                        @endauth
+
                     </x-slot>
 
                     <x-slot name="content">
@@ -102,18 +115,31 @@
             <x-responsive-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
                 {{ __('Tous les temps') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
-                {{ __('Ajouter un tour') }}
-
-            </x-responsive-nav-link>
+            @auth
+                <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+                    {{ __('Ajouter un tour') }}
+                </x-responsive-nav-link>
+            @endauth
 
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @auth
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @else
+                    <a href="{{ route('login') }}"
+                       class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                        in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                           class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    @endif
+                @endauth
+
             </div>
 
             <div class="mt-3 space-y-1">

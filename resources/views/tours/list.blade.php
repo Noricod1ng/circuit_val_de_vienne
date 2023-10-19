@@ -1,9 +1,11 @@
 <x-app-layout>
-    <div class="text-right mt-4 mx-5"   >
-        <a href='/tours'>
-            <x-primary-button class="mt-4">{{ __('Ajouter un tour') }}</x-primary-button>
-        </a>
-    </div>
+    @auth
+        <div class="text-right mt-4 mx-5">
+            <a href='/tours'>
+                <x-primary-button class="mt-4">{{ __('Ajouter un tour') }}</x-primary-button>
+            </a>
+        </div>
+    @endauth
 
 
     <div class="mt-6 mx-5 bg-white shadow-sm rounded-lg divide-y">

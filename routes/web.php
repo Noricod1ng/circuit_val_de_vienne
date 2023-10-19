@@ -22,11 +22,11 @@ Route::get('/', function () {
 
 Route::get('/accueil', function () {
     return view('accueil');
-})->middleware(['auth', 'verified'])->name('accueil');
+})->name('accueil');
 
 Route::get('/presentation', function () {
     return view('presentation');
-})->middleware(['auth', 'verified'])->name('presentation');
+})->name('presentation');
 
 Route::get('/all_times', function () {
     $tours = Tour::with('user')->orderBy('time')->cursorPaginate(30);
