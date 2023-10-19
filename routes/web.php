@@ -33,6 +33,13 @@ Route::get('/all_times', function () {
     return view('tours.list', ['tours' => $tours]);
 })->name('tours.list');
 
+Route::get('/my_times', function () {
+    $user = auth()->user();
+    $tours = Tour::where('user_id', $user->id)->latest()->cursorPaginate(30);
+
+    return view('tours.list', ['tours' => $tours]);
+})->name('my_times')->middleware('auth');
+
 Route::resource('tours', TourController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
