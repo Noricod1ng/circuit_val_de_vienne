@@ -16,6 +16,9 @@
                     <x-nav-link :href="route('accueil')" :active="request()->routeIs('accueil')">
                         {{ __('Accueil') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('presentation')" :active="request()->routeIs('presentation')">
+                        {{ __('Présentation') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
                         {{ __('Tous les temps') }}
                     </x-nav-link>
