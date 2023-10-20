@@ -37,6 +37,8 @@ class TourController extends Controller
      */
     public function create(): View
     {
+        $this->authorize('create', Tour::class);
+
         return view('tours.index', [
             'tours' => Tour::with('user')->latest()->get(),
             'categories' => Category::all(),
