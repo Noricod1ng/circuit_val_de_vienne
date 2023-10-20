@@ -23,7 +23,7 @@
 
 
         <div class="row">
-            <div class="col-3" style="background-color: #D5D5D5FF">
+            <div class="col-2" style="background-color: #D5D5D5FF">
                 <p class="font-semibold">NOM</p>
             </div>
             <div class="col-1">
@@ -35,7 +35,7 @@
             <div class="col-2">
                 <p class="font-semibold">CATEGORIE</p>
             </div>
-            <div class="col-3">
+            <div class="col-3" style="background-color: #D5D5D5FF">
                 <p class="font-semibold">VOITURE</p>
             </div>
 
@@ -43,7 +43,7 @@
 
         @foreach ($tours as $tour)
             <div class="row">
-                <div class="col-3" style="background-color: #D5D5D5FF">
+                <div class="col-2" style="background-color: #D5D5D5FF">
                     <p>{{ $tour->user->name }}</p>
                 </div>
                 <div class="col-1">
