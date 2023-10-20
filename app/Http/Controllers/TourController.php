@@ -49,8 +49,11 @@ class TourController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'date' => 'required|date',
-            'time' => 'required|regex:/^\d{2}:\d{2}:\d{3}$/',
+            'date' => 'required|date|date_format:Y-m-d|before_or_equal:' . now()->format('Y-m-d'),
+            'time' => [
+                'required',
+                'regex:/^(0[0-9]|[1-5][0-9]):(0[0-9]|[1-5][0-9]):(0[0-9][0-9][0-9]|[1-9][0-9][0-9]|9[0-9][0-9])$/',
+            ],
             'car' => 'required|string|max:255',
             'session_number' => 'required|numeric|digits:12',
             'category_id' => 'required|numeric',
@@ -60,7 +63,7 @@ class TourController extends Controller
         $request->user()->tours()->create($validated);
 
 
-        return redirect(route('tours.create'));
+        return redirect(route('tours.index'));
     }
 
     /**
