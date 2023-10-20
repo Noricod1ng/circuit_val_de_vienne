@@ -15,15 +15,19 @@
             <div class="col-3" style="background-color: #D5D5D5FF">
                 <p class="font-semibold">NOM</p>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 <p class="font-semibold">DATE</p>
             </div>
-            <div class="col-3" style="background-color: #D5D5D5FF">
+            <div class="col-2" style="background-color: #D5D5D5FF">
                 <p class="font-semibold">TEMPS AU TOUR</p>
+            </div>
+            <div class="col-2">
+                <p class="font-semibold">CATEGORIE</p>
             </div>
             <div class="col-3">
                 <p class="font-semibold">VOITURE</p>
             </div>
+
         </div>
 
         @foreach ($tours as $tour)
@@ -31,13 +35,16 @@
                 <div class="col-3" style="background-color: #D5D5D5FF">
                     <p>{{ $tour->user->name }}</p>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <p>{{ $tour->date }}</p>
                 </div>
-                <div class="col-3" style="background-color: #D5D5D5FF">
+                <div class="col-2 text-center" style="background-color: #D5D5D5FF">
                     <p>{{ $tour->time }}</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
+                    <p>{{ $tour->category->name }}</p>
+                </div>
+                <div class="col-3" style="background-color: #D5D5D5FF">
                     <p>{{ $tour->car }}</p>
                 </div>
                 <div class="col-1">

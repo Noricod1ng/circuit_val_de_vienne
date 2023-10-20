@@ -16,6 +16,7 @@ class Tour extends Model
         'time',
         'car',
         'session_number',
+        'category_id',
     ];
 
     protected $dispatchesEvents = [
@@ -25,5 +26,10 @@ class Tour extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

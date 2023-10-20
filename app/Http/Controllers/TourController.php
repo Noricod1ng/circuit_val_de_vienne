@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Tour;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class TourController extends Controller
     {
         return view('tours.index', [
             'tours' => Tour::with('user')->latest()->get(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -24,7 +26,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create');
     }
 
     /**
@@ -37,6 +39,7 @@ class TourController extends Controller
             'time' => 'required|regex:/^\d{2}:\d{2}:\d{3}$/',
             'car' => 'required|string|max:255',
             'session_number' => 'required|numeric|digits:12',
+            'category_id' => 'required|numeric',
         ]);
 
 
@@ -64,9 +67,8 @@ class TourController extends Controller
 
 
         return view('tours.edit', [
-
             'tour' => $tour,
-
+            'categories' => Category::all(),
         ]);
     }
 
@@ -82,7 +84,7 @@ class TourController extends Controller
         $validated = $request->validate([
 
             'car' => 'required|string|max:255',
-
+            'category_id' => 'required|numeric',
         ]);
 
 

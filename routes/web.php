@@ -29,13 +29,13 @@ Route::get('/presentation', function () {
 })->name('presentation');
 
 Route::get('/all_times', function () {
-    $tours = Tour::with('user')->orderBy('time')->cursorPaginate(30);
+    $tours = Tour::with('user')->orderBy('time')->cursorPaginate(15);
     return view('tours.list', ['tours' => $tours]);
 })->name('tours.list');
 
 Route::get('/my_times', function () {
     $user = auth()->user();
-    $tours = Tour::where('user_id', $user->id)->latest()->cursorPaginate(30);
+    $tours = Tour::where('user_id', $user->id)->latest()->cursorPaginate(15);
 
     return view('tours.list', ['tours' => $tours]);
 })->name('my_times')->middleware('auth');

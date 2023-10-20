@@ -29,6 +29,16 @@
                 <x-input-error :messages="$errors->get('car')" class="mt-2"/>
             </div>
 
+            <!-- Numéro de session -->
+            <div class="mt-4">
+                <x-input-label for="category_id" :value="__('Catégorie')"/>
+                <select name="category_id" id="category" class="form-control">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                 <a href="{{ route('tours.list') }}">{{ __('Cancel') }}</a>

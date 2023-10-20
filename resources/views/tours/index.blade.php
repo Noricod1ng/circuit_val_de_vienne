@@ -35,6 +35,18 @@
                               laceholder="000000000000" required/>
                 <x-input-error :messages="$errors->get('session_number')" class="mt-2"/>
             </div>
+
+
+            <!-- Numéro de session -->
+            <div class="mt-4">
+                <x-input-label for="category_id" :value="__('Catégorie')"/>
+                <select name="category_id" id="category" class="form-control">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="text-right mt-4">
                 <x-primary-button class="mt-4">{{ __('Ajouter') }}</x-primary-button>
             </div>
