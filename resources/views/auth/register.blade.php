@@ -41,7 +41,7 @@
 
         <!-- Newsletter Subscription -->
         <div class="mt-4">
-            <label for="newsletter">{{__('Subscribe to Newsletter')}}</label>
+            <label for="newsletter">{{__('Souscrire à la Newsletter')}}</label>
             <input id="newsletter" class="form-checkbox h-5 w-5 text-indigo-600"
                           type="checkbox"
                           name="newsletter"/>
