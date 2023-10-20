@@ -22,10 +22,13 @@ class SendTourCreatedNotifications implements ShouldQueue
      */
     public function handle(TourCreated $event): void
     {
-        foreach (User::whereNot('id', $event->tour->user_id)->cursor() as $user) {
 
-            $user->notify(new NewTour($event->tour));
+        $subscribedUsers = User::where('newsletter', true)->get();
 
+        foreach ($subscribedUsers as $user) {
+            if ($user->id !== $event->tour->user_id) {
+                $user->notify(new NewTour($event->tour));
+            }
         }
     }
 }

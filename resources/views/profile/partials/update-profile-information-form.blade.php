@@ -47,6 +47,15 @@
             @endif
         </div>
 
+        <div class="mt-4">
+            <label for="newsletter">{{__('Subscribe to Newsletter')}}</label>
+            <input id="newsletter" class="form-checkbox h-5 w-5 text-indigo-600"
+                   type="checkbox"
+                   name="newsletter"
+                {{ $user->newsletter ? 'checked' : '' }}>
+            <x-input-error :messages="$errors->get('newsletter')" class="mt-2" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
