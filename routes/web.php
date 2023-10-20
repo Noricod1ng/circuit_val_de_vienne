@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TourController;
+use App\Models\Category;
 use App\Models\Tour;
 use Illuminate\Support\Facades\Route;
 
@@ -28,20 +29,12 @@ Route::get('/presentation', function () {
     return view('presentation');
 })->name('presentation');
 
-Route::get('/all_times', function () {
-    $tours = Tour::with('user')->orderBy('time')->cursorPaginate(15);
-    return view('tours.list', ['tours' => $tours]);
-})->name('tours.list');
-
-Route::get('/my_times', function () {
-    $user = auth()->user();
-    $tours = Tour::where('user_id', $user->id)->latest()->cursorPaginate(15);
-
-    return view('tours.list', ['tours' => $tours]);
-})->name('my_times')->middleware('auth');
+Route::get('/tours/user', [TourController::class, 'showByUser'])
+    ->name('tours.showByUser')
+    ->middleware(['auth', 'verified']);
 
 Route::resource('tours', TourController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

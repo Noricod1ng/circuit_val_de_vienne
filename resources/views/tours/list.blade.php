@@ -7,6 +7,17 @@
         </div>
     @endauth
 
+    <form method="GET">
+        <label for="category">Filtrer par catégorie :</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+            @foreach ($categories as $categoryId => $categoryName)
+                <option value="{{ $categoryId }}" {{ Request::get('category') == $categoryId ? 'selected' : '' }}>
+                    {{ $categoryName }}
+                </option>
+            @endforeach
+        </select>
+    </form>
+
 
     <div class="mt-6 mx-5 bg-white shadow-sm rounded-lg divide-y">
 

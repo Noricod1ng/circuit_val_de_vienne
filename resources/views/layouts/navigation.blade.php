@@ -22,11 +22,11 @@
                     <x-nav-link :href="url('https://les-2-arbres.e-catalogues.info/')" target="_blank">
                         {{ __('Calendrier') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
+                    <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
                         {{ __('Tous les temps') }}
                     </x-nav-link>
                     @auth
-                        <x-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+                        <x-nav-link :href="route('tours.create')" :active="request()->routeIs('tours.create')">
                             {{ __('Ajouter un tour') }}
                         </x-nav-link>
                     @endauth
@@ -58,7 +58,7 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('my_times')">
+                            <x-dropdown-link :href="route('tours.showByUser')">
                                 {{ __('Mes Tours') }}
                             </x-dropdown-link>
                             <!-- Authentication -->
@@ -115,11 +115,11 @@
             <x-responsive-nav-link :href="url('https://les-2-arbres.e-catalogues.info/')" target="_blank">
                 {{ __('Calendrier') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tours.list')" :active="request()->routeIs('tours.list')">
+            <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
                 {{ __('Tous les temps') }}
             </x-responsive-nav-link>
             @auth
-                <x-responsive-nav-link :href="route('tours.index')" :active="request()->routeIs('tours.index')">
+                <x-responsive-nav-link :href="route('tours.create')" :active="request()->routeIs('tours.create')">
                     {{ __('Ajouter un tour') }}
                 </x-responsive-nav-link>
             @endauth
@@ -136,7 +136,7 @@
                         <x-responsive-nav-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-responsive-nav-link>
-                        <x-responsive-nav-link :href="route('my_times')">
+                        <x-responsive-nav-link :href="route('tours.showByUser')">
                             {{ __('Mes Tours') }}
                         </x-responsive-nav-link>
                         <!-- Authentication -->

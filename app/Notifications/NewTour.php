@@ -43,7 +43,6 @@ class NewTour extends Notification
             ->line("Voiture enregistrée : " .Str::limit($this->tour->car, 50))
             ->action('Voir le tour', url('/all_times'))
             ->line('Merci d\'utiliser notre application');
-
     }
 
     /**

@@ -13,20 +13,34 @@ class TourController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request)
+    {
+        $categoryFilter = $request->input('category');
+
+        $query = Tour::with('user', 'category')->orderBy('time', 'asc');
+
+        if ($categoryFilter != '') {
+            $query->where('category_id', $categoryFilter);
+        }
+
+        $tours = $query->cursorPaginate(15);
+
+        $categories = Category::pluck('name', 'id')->prepend('TOUS', '');
+
+        return view('tours.list', compact('tours', 'categories', 'categoryFilter'));
+    }
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(): View
     {
         return view('tours.index', [
             'tours' => Tour::with('user')->latest()->get(),
             'categories' => Category::all(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $this->authorize('create');
     }
 
     /**
@@ -46,7 +60,7 @@ class TourController extends Controller
         $request->user()->tours()->create($validated);
 
 
-        return redirect(route('tours.index'));
+        return redirect(route('tours.create'));
     }
 
     /**
@@ -65,7 +79,6 @@ class TourController extends Controller
         $this->authorize('update', $tour);
 
 
-
         return view('tours.edit', [
             'tour' => $tour,
             'categories' => Category::all(),
@@ -80,7 +93,6 @@ class TourController extends Controller
         $this->authorize('update', $tour);
 
 
-
         $validated = $request->validate([
 
             'car' => 'required|string|max:255',
@@ -88,12 +100,10 @@ class TourController extends Controller
         ]);
 
 
-
         $tour->update($validated);
 
 
-
-        return redirect(route('tours.list'));
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -109,4 +119,26 @@ class TourController extends Controller
 
         return redirect(route('tours.list'));
     }
+
+    public function showByUser(Request $request): View
+    {
+        $user = auth()->user();
+
+        $categoryFilter = $request->input('category');
+
+        $query = Tour::with('user', 'category')->orderBy('time', 'asc');
+
+        if ($categoryFilter != '') {
+            $query->where('category_id', $categoryFilter);
+        }
+
+        $query->where('user_id', $user->id);
+
+        $tours = $query->cursorPaginate(15);
+
+        $categories = Category::pluck('name', 'id')->prepend('TOUS', '');
+
+        return view('tours.list', compact('tours', 'categories', 'categoryFilter'));
+    }
+
 }

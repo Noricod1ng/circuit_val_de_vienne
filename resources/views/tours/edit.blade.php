@@ -41,7 +41,7 @@
 
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
-                <a href="{{ route('tours.list') }}">{{ __('Cancel') }}</a>
+                <a href="{{ route('tours.index') }}">{{ __('Cancel') }}</a>
             </div>
         </form>
     </div>
