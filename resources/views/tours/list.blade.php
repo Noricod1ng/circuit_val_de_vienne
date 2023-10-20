@@ -1,7 +1,7 @@
 <x-app-layout>
     @auth
         <div class="text-right mt-4 mx-5">
-            <a href='/tours'>
+            <a href='{{ route('tours.create') }}'>
                 <x-primary-button class="mt-4">{{ __('Ajouter un tour') }}</x-primary-button>
             </a>
         </div>

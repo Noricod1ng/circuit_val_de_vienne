@@ -120,7 +120,7 @@ class TourController extends Controller
         $tour->delete();
 
 
-        return redirect(route('tours.list'));
+        return redirect(route('tours.index'));
     }
 
     public function showByUser(Request $request): View

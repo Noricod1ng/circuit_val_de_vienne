@@ -8,20 +8,6 @@
             @csrf
             @method('patch')
 
-            <!-- Date -->
-            <div class="mt-4">
-                <x-input-label for="date" :value="__('Date de la session')"/>
-                <x-text-input id="date" class="block mt-1 w-full" type="date" name="date" value="{{ old('car', $tour->date) }}" required autofocus/>
-                <x-input-error :messages="$errors->get('date')" class="mt-2"/>
-            </div>
-
-            <!-- Temps au tour -->
-            <div class="mt-4">
-                <x-input-label for="time" :value="__('Temps (mm:ss:mss)')"/>
-                <x-text-input id="time" class="block mt-1 w-full" type="text" name="time" value="{{ old('car', $tour->time) }}" required/>
-                <x-input-error :messages="$errors->get('time')" class="mt-2"/>
-            </div>
-
             <!-- Voiture -->
             <div class="mt-4">
                 <x-input-label for="car" :value="__('Votre voiture')"/>
